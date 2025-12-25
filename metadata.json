@@ -1,0 +1,5 @@
+{
+  "name": "IntelliSearch Spreadsheet Explorer",
+  "description": "A sophisticated search interface that performs intelligent lookups from a dataset, mapping Column B inputs to Column D results with autocomplete and AI-powered insights.",
+  "requestFramePermissions": []
+}
