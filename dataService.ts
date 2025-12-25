@@ -1,5 +1,4 @@
-
-import { DataRow } from '../types';
+import { DataRow } from '../types.ts';
 
 // The spreadsheet ID extracted from the user's link - Exported for use in App component
 export const SHEET_ID = '1P9EDUYJ4ew6fFOih63XIDUjSyWEdiije';

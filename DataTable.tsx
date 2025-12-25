@@ -1,7 +1,6 @@
-
 import React, { useState, useMemo } from 'react';
-import { DataRow } from '../types';
-import { Hash, Type, Tag, FileText, Search, X, Layers, CheckCircle2, ArrowRight } from 'lucide-react';
+import { DataRow } from '../types.ts';
+import { Hash, Type, Search, X, Layers, CheckCircle2, ArrowRight } from 'lucide-react';
 
 interface DataTableProps {
   data: DataRow[];
@@ -154,13 +153,11 @@ const DataTable: React.FC<DataTableProps> = ({ data, onSelect, activeId }) => {
             </div>
 
             <div className="p-12 sm:p-16 space-y-10">
-              {/* ID and Tag */}
               <div className="flex items-center gap-4">
                 <span className="px-4 py-2 bg-slate-100 rounded-xl text-[10px] font-black text-slate-400 tracking-widest tabular-nums uppercase">Record ID {selectedItem.columnA}</span>
                 <div className="h-px flex-1 bg-slate-100"></div>
               </div>
 
-              {/* Title / Input */}
               <div className="space-y-2">
                 <p className="text-[9px] font-black text-slate-400 uppercase tracking-[0.5em]">Part Number</p>
                 <h2 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tighter leading-none">
@@ -168,9 +165,7 @@ const DataTable: React.FC<DataTableProps> = ({ data, onSelect, activeId }) => {
                 </h2>
               </div>
 
-              {/* Stacked Details */}
               <div className="space-y-6">
-                {/* Highlighted Category (C) */}
                 <div className="bg-indigo-600 rounded-[2.5rem] p-10 relative overflow-hidden group shadow-2xl">
                   <div className="absolute top-[-50%] right-[-10%] w-[300px] h-[300px] bg-indigo-400/20 blur-[80px] rounded-full"></div>
                   <div className="relative z-10 flex items-start gap-5">
@@ -186,7 +181,6 @@ const DataTable: React.FC<DataTableProps> = ({ data, onSelect, activeId }) => {
                   </div>
                 </div>
 
-                {/* Final Response (D) */}
                 <div className="bg-slate-50 rounded-[2.5rem] p-10 border border-slate-100 flex items-start gap-5">
                   <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm border border-slate-100">
                     <CheckCircle2 className="h-6 w-6 text-emerald-500" />
@@ -200,7 +194,6 @@ const DataTable: React.FC<DataTableProps> = ({ data, onSelect, activeId }) => {
                 </div>
               </div>
 
-              {/* Footer Button to Load in Explore */}
               <div className="pt-6 flex justify-center">
                 <button 
                   onClick={() => {

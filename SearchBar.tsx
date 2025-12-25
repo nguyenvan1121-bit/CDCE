@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { Search, X, ArrowRight } from 'lucide-react';
-import { DataRow } from '../types';
+import { DataRow } from '../types.ts';
 
 interface SearchBarProps {
   data: DataRow[];
@@ -18,10 +17,12 @@ const SearchBar: React.FC<SearchBarProps> = ({ data, onSelect }) => {
     const trimmedQuery = query.trim().toLowerCase();
     
     if (trimmedQuery.length > 0) {
+      // Find matches in Column B
       const matches = data.filter(item =>
         item.columnB.toLowerCase().includes(trimmedQuery)
       );
       
+      // Sort: items starting with the query come first
       const sorted = [...matches].sort((a, b) => {
         const aStart = a.columnB.toLowerCase().startsWith(trimmedQuery);
         const bStart = b.columnB.toLowerCase().startsWith(trimmedQuery);
@@ -33,6 +34,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ data, onSelect }) => {
       setSuggestions(sorted.slice(0, 8));
       setIsOpen(true);
       
+      // Auto-preview the first match if it exists
       if (sorted.length > 0) {
         onSelect(sorted[0]);
       }
@@ -43,6 +45,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ data, onSelect }) => {
     }
   }, [query, data, onSelect]);
 
+  // Close dropdown when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target as Node)) {

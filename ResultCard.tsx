@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Hash, Tag, FileText, CheckCircle2, Layers } from 'lucide-react';
-import { SearchResult } from '../types';
+import { SearchResult } from '../types.ts';
 
 interface ResultCardProps {
   result: SearchResult;

@@ -1,16 +1,16 @@
-
 import React, { useState, useCallback, useEffect } from 'react';
-import SearchBar from './components/SearchBar';
-import ResultCard from './components/ResultCard';
-import DataTable from './components/DataTable';
-import { fetchSheetData, SHEET_ID } from './services/dataService';
+import SearchBar from './components/SearchBar.tsx';
+import ResultCard from './components/ResultCard.tsx';
+import DataTable from './components/DataTable.tsx';
+import { fetchSheetData, SHEET_ID } from './services/dataService.ts';
+import { DataRow } from './types.ts';
 import { Zap, List, LayoutGrid, CheckCircle2, Loader2, AlertCircle, ExternalLink, Search as SearchIcon } from 'lucide-react';
 
 const App: React.FC = () => {
-  const [dataset, setDataset] = useState<any[]>([]);
+  const [dataset, setDataset] = useState<DataRow[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [activeResult, setActiveResult] = useState<any | null>(null);
+  const [activeResult, setActiveResult] = useState<{ match: DataRow } | null>(null);
   const [viewMode, setViewMode] = useState<'search' | 'all'>('search');
 
   useEffect(() => {
@@ -30,7 +30,7 @@ const App: React.FC = () => {
     initData();
   }, []);
 
-  const handleSelect = useCallback((item: any | null) => {
+  const handleSelect = useCallback((item: DataRow | null) => {
     if (!item) {
       setActiveResult(null);
       return;
@@ -131,7 +131,7 @@ const App: React.FC = () => {
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-700">
             <DataTable 
               data={dataset} 
-              onSelect={(item) => {
+              onSelect={(item: DataRow) => {
                 handleSelect(item);
                 setViewMode('search');
               }}

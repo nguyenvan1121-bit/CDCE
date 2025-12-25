@@ -1,5 +1,4 @@
-
-import { DataRow } from '../types';
+import { DataRow } from '../types.ts';
 
 /**
  * Mocking the structure of the provided spreadsheet.
